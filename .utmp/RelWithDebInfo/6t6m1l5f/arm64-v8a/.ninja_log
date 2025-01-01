@@ -1,0 +1,10 @@
+# ninja log v5
+38	1723	7569402742794102	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	1e6996e054b11b51
+59	1780	7569402743377427	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	f75ed140d5ce36d5
+14	1791	7569402743448280	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	b977e5d331e313e2
+28	1797	7569402743499590	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	d2146d7d4d5f6913
+49	1916	7569402744739129	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	e807072b0be87a1f
+8	1999	7569402745577069	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	9b9776d309e21624
+21	2187	7569402747514605	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	f9d83f0ccf20d34c
+1	2384	7569402749478135	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	2880d3d79f0a5f17
+2385	2545	7569402750800934	C:/Users/user/laziz_phd/unityProjects/PizzaMakingVR/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/6t6m1l5f/obj/arm64-v8a/libgame.so	3c6a53f3e10b691a

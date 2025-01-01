@@ -1,0 +1,2 @@
+C:\Users\user\laziz_phd\unityProjects\PizzaMakingVR\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\CMakeLists.txt
+C:\Users\user\laziz_phd\unityProjects\PizzaMakingVR\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\CMakeLists.txt

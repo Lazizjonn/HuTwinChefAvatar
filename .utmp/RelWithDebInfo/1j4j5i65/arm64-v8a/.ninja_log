@@ -1,0 +1,19 @@
+# ninja log v5
+19	2311	7571922923151915	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	8538c190a358418c
+58	2250	7571922921411407	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	7f43e4c1e11fd6d1
+10	2254	7571922921076361	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	e00959c7d09ae8dc
+67	2254	7571922921559556	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	fbc805a15219c2b8
+38	2256	7571922920743466	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	c59c08a33e3f19f9
+2620	2754	7571922927886913	C:/Users/user/laziz_phd/unityProjects/PizzaMakingVRAndroid/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/1j4j5i65/obj/arm64-v8a/libgame.so	efee786a9501d960
+47	2257	7571922921411407	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	6beb6f7405a35943
+28	2410	7571922924428145	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	962d1de41b538176
+1	2620	7571922926499068	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	c3b4329c2feded78
+149	2263	7571948889415209	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	6beb6f7405a35943
+62	2268	7571948889539645	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	c59c08a33e3f19f9
+76	2384	7571948890856666	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	e00959c7d09ae8dc
+233	2736	7571948893699169	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	fbc805a15219c2b8
+90	2737	7571948893640510	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	8538c190a358418c
+194	2836	7571948894900815	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	7f43e4c1e11fd6d1
+116	3020	7571948897300659	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	962d1de41b538176
+29	3160	7571948898224368	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	c3b4329c2feded78
+3160	3377	7571948900647377	C:/Users/user/laziz_phd/unityProjects/PizzaMakingVRAndroid/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/1j4j5i65/obj/arm64-v8a/libgame.so	efee786a9501d960
