@@ -1,10 +1,6 @@
 {
   "dependencies": {
-<<<<<<< Updated upstream
-    "com.meta.movement": "file:C:/Users/suyun/Unity projects/MovementSDK/Unity-Movement-69.0.0",
-=======
     "com.meta.movement": "https://github.com/oculus-samples/Unity-Movement.git#v69.0.0",
->>>>>>> Stashed changes
     "com.meta.xr.sdk.all": "69.0.0",
     "com.unity.ai.navigation": "2.0.5",
     "com.unity.analytics": "3.8.1",
