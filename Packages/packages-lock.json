@@ -1,9 +1,13 @@
 {
   "dependencies": {
     "com.meta.movement": {
+<<<<<<< Updated upstream
       "version": "file:C:/Users/suyun/Unity projects/MovementSDK/Unity-Movement-69.0.0",
+=======
+      "version": "https://github.com/oculus-samples/Unity-Movement.git#v69.0.0",
+>>>>>>> Stashed changes
       "depth": 0,
-      "source": "local",
+      "source": "git",
       "dependencies": {
         "com.meta.xr.sdk.core": "67.0.0",
         "com.meta.xr.sdk.interaction": "67.0.0",
@@ -11,7 +15,8 @@
         "com.unity.textmeshpro": "3.0.6",
         "com.unity.animation.rigging": "1.2.1",
         "com.unity.burst": "1.4.1"
-      }
+      },
+      "hash": "028f11ddb29d2a0e2410a0e5ca673af06182190c"
     },
     "com.meta.xr.mrutilitykit": {
       "version": "69.0.0",
