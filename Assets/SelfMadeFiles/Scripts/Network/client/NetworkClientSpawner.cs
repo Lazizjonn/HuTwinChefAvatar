@@ -52,6 +52,7 @@ public class NetworkClientSpawner : NetworkBehaviour
         {
             GameObject XRrig = GameObject.FindGameObjectsWithTag("XRrig")[0];
             XRrig.transform.position = position;
+            XRrig.transform.rotation = rotation;
         }
 
     }
