@@ -403,47 +403,60 @@ public class NetworkTaskProgression : NetworkBehaviour
         instructionText = canvtext;
         canvas = canv;
         VRcamera = camer;
-        instructionText.text = "Push The Button to Start the Game";
+        // instructionText.text = "Push The Button to Start the Game";
+        instructionText.text = "Premi il pulsante per iniziare il gioco";
     }
 
     public void UpdateInstruction(){
         if (final) return;
         if (gameStarted.Value)
         {
-            instructionText.text = "Mix Water and Flour in Bowl";
+            // instructionText.text = "Mix Water and Flour in Bowl";
+            instructionText.text = "Mescola l'acqua e la farina nella ciotola";
         }
         if (flourFilled.Value && waterFilled.Value){
-            instructionText.text = "Knead the Dough";
+           // instructionText.text = "Knead the Dough";
+            instructionText.text = "Impasta la pasta";
         }
         if (doughKneaded.Value){
-            instructionText.text = "Place Dough on Indicator";
+           // instructionText.text = "Place Dough on Indicator";
+            instructionText.text = "Posiziona l'impasto nell'indicazione";
         }
         if (doughPlaced.Value){
-            instructionText.text = "Spread Dough with Two Hands using Rolling Pin";
+            // instructionText.text = "Spread Dough with Two Hands using Rolling Pin";
+            instructionText.text = "Stendi l'impasto con due mani usando il mattarello";
         }
         if (doughSpread.Value){
-            instructionText.text = "Spread Sauce on Pizza with Spoon";
+            // instructionText.text = "Spread Sauce on Pizza with Spoon";
+            instructionText.text = "Spalma il sugo sulla pizza con il cucchiaio";
         }
         if (tomatoSpread.Value && (sausageCut.Value < 4 || bellPepperCut.Value < 4)){
-            instructionText.text = "Cut Pepper = " + Math.Min(bellPepperCut.Value,4) + "of 4 Cut Sausage = " + Math.Min(sausageCut.Value,4) + " of 4";   // \n
+            // instructionText.text = "Cut Pepper = " + Math.Min(bellPepperCut.Value,4) + "of 4 Cut Sausage = " + Math.Min(sausageCut.Value,4) + " of 4";   // \n
+            instructionText.text = "Taglia il peperone = " + Math.Min(bellPepperCut.Value,4) + "of 4 Taglia la salsiccia = " + Math.Min(sausageCut.Value,4) + " of 4";   // \n
         }
         if (tomatoSpread.Value && (sausageCut.Value >= 4 && bellPepperCut.Value >= 4)){
-            instructionText.text = "Place 4 Slices of each Topping on Pizza";
+            // instructionText.text = "Place 4 Slices of each Topping on Pizza";
+            instructionText.text = "Posiziona 4 fette di ogni condimento sulla pizza";
         }
         if (pizzaFinished.Value && !ovenOpen.Value){ 
-            instructionText.text = "Open Oven with Button";   // This one DOES HAPPEN
+            // instructionText.text = "Open Oven with Button";   // This one DOES HAPPEN
+            instructionText.text = "Apri il forno con il pulsante";   // This one DOES HAPPEN
         }
         if (pizzaFinished.Value && ovenOpen.Value){ //sans!  DOES NOT
-            instructionText.text = "Put Pizza in Oven with Pizza Shovel";
+           // instructionText.text = "Put Pizza in Oven with Pizza Shovel";
+           instructionText.text = "Inforna la pizza con la pala";
         }
         if (pizzaInOven.Value && ovenOpen.Value){ //sans!  DOES NOT
-            instructionText.text = "Close Oven";
+            // instructionText.text = "Close Oven";
+            instructionText.text = "Chiudi Forno";
         }
         if (pizzaInOven.Value && !ovenOpen.Value){  //DOES HAPPEN
-            instructionText.text = "Baking " + pizzaBakeTimer.Value.ToString("F1");
+            // instructionText.text = "Baking " + pizzaBakeTimer.Value.ToString("F1");
+            instructionText.text = "Cottura al Forno " + pizzaBakeTimer.Value.ToString("F1");
         }
         if (pizzaBakeTimer.Value <= 0){
-            instructionText.text = "Place Pizza on Plate with Pizza Shovel";
+            // instructionText.text = "Place Pizza on Plate with Pizza Shovel";
+            instructionText.text = "Posiziona la Pizza sul Piatto con la Pala per Pizza";
             if (!pizzaBaked.Value)
             {
                 //BroadcastRemoteMethod("BakePizza");
@@ -463,10 +476,12 @@ public class NetworkTaskProgression : NetworkBehaviour
             //     }
             //     cheeseGrating.SetActive(true);
             // }
-            instructionText.text = "Well Done , Thank you for your contribution!";
+
+            //instructionText.text = "Well Done , Thank you for your contribution!";
+            instructionText.text = "Ben fatto! Grazie per il tuo contributo!";
         }
         if (cheeseGrated.Value && !final && finished.Value){
-            instructionText.text = "Well Done!  Time: " + taskTimer.ToString("F1") + " Seconds";   // \n
+            instructionText.text = "Well Done!  Time: " + taskTimer.ToString("F1") + " Seconds";
             // Debug.LogWarning("------------------------------------------------");
             // Debug.LogWarning("Session ID:" + sessionID.ToString());
             // Debug.LogWarning("Clearance Time:" + taskTimer.ToString("F2"));
