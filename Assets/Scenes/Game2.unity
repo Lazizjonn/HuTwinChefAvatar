@@ -10502,7 +10502,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8847913198787231975, guid: ed964aabe91d90e40b603042df555161, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.3605518
+      value: -2.273
       objectReference: {fileID: 0}
     - target: {fileID: 8847913198787231975, guid: ed964aabe91d90e40b603042df555161, type: 3}
       propertyPath: m_LocalRotation.w
@@ -13001,7 +13001,7 @@ MonoBehaviour:
   _headPoseRelativeOffsetRotation: {x: 0, y: 0, z: 0}
   _headPoseRelativeOffsetTranslation: {x: 0, y: 0, z: 0}
   profilerTcpPort: 32419
-  expandMixedRealityCapturePropertySheet: 0
+  expandMixedRealityCapturePropertySheet: 1
   enableMixedReality: 0
   compositionMethod: 0
   extraHiddenLayers:
@@ -13039,7 +13039,7 @@ MonoBehaviour:
   requestBodyTrackingPermissionOnStartup: 1
   requestFaceTrackingPermissionOnStartup: 1
   requestEyeTrackingPermissionOnStartup: 1
-  requestScenePermissionOnStartup: 0
+  requestScenePermissionOnStartup: 1
   requestRecordAudioPermissionOnStartup: 0
   _localDimming: 1
   _trackingOriginType: 0
