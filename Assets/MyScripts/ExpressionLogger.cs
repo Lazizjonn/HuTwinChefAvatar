@@ -11,6 +11,7 @@ public class ExpressionLogger : MonoBehaviour
     private ConcurrentQueue<string> logQueue = new ConcurrentQueue<string>();
     private Thread logThread;
     private bool isRunning = true;
+    private string message = null;
 
     void Start()
     {
@@ -18,7 +19,7 @@ public class ExpressionLogger : MonoBehaviour
 
         if (faceExpressions == null)
         {
-            Debug.LogError("TTT, OVRFaceExpressions component not found on this GameObject, Start()");
+            // Debug.LogError("TTT, OVRFaceExpressions component not found on this GameObject, Start()");
             enabled = false;
             return;
         }
@@ -34,7 +35,7 @@ public class ExpressionLogger : MonoBehaviour
         Directory.CreateDirectory(Path.GetDirectoryName(logFilePath));
 
         File.WriteAllText(logFilePath, "Time,Expression,Weight\n");
-        Debug.Log("TTT, Expression log file created at " + logFilePath + ", Start()");
+        // Debug.Log("TTT, Expression log file created at " + logFilePath + ", Start()");
 
         // Start the logging thread, my new thread
         logThread = new Thread(LogToFile);
@@ -53,7 +54,7 @@ public class ExpressionLogger : MonoBehaviour
                 // Enqueue the log entry
                 string logEntry = $"{DateTime.Now:hh:mm:ss.fff tt},{expression},{weight}";
                 logQueue.Enqueue(logEntry);
-                Debug.Log("TTT, " + logEntry + ", Update()");
+                // Debug.Log("TTT, " + logEntry + ", Update()");
             }
         }
         else
@@ -61,7 +62,7 @@ public class ExpressionLogger : MonoBehaviour
             // Log invalid state
             string logEntry = $"{DateTime.Now:hh:mm:ss.fff tt},Invalid,N/A";
             logQueue.Enqueue(logEntry);
-            Debug.LogWarning("TTT, " + logEntry + ", Update()");
+            // Debug.LogWarning("TTT, " + logEntry + ", Update()");
         }
     }
 
@@ -69,6 +70,11 @@ public class ExpressionLogger : MonoBehaviour
     {
         while (isRunning || !logQueue.IsEmpty)
         {
+        if (message != null)
+        {
+            File.AppendAllText(logFilePath, message);
+            message = null;
+        }
             if (logQueue.TryDequeue(out string logEntry))
             {
                 File.AppendAllText(logFilePath, logEntry + "\n");
@@ -80,6 +86,12 @@ public class ExpressionLogger : MonoBehaviour
         }
     }
 
+    public void AddTaskLevelMessage(string taskLevel)
+    {
+        string taskLevelLog = $"########################   New level - {taskLevel}   ########################";
+        message = "\n" + taskLevelLog + "\n";
+    }
+
     void OnDestroy()
     {
         isRunning = false;
@@ -88,6 +100,6 @@ public class ExpressionLogger : MonoBehaviour
         // Log shutdown for debugging purposes
         string shutdownLog = $"{DateTime.Now:hh:mm:ss.fff tt},Shutdown,Application shutting down.";
         File.AppendAllText(logFilePath, shutdownLog + "\n");
-        Debug.Log("TTT, " + shutdownLog + ", OnDestroy()");
+        // Debug.Log("TTT, " + shutdownLog + ", OnDestroy()");
     }
 }

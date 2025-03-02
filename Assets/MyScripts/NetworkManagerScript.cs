@@ -13,6 +13,7 @@ public class NetworkManagerScript : MonoBehaviour
     [SerializeField] private TMP_InputField maxPayload;
     [SerializeField] private TMP_InputField maxPacketQueue;
 
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

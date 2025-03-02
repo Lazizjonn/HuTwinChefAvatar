@@ -99,6 +99,11 @@ public class NetworkTaskProgression : NetworkBehaviour
     //private string filePath = ;
     //====================================================================
     //------------------ RPC METHODS -------------------------------------
+
+    //--------===== Update logs during task process =====-----------------
+    [SerializeField] private ExpressionLogger expressionScript;
+    [SerializeField] private BoneLogger jointScript;
+    private int currentTaskLevel = 0;
     private void SaveData()
     {
         Debug.Log("SAVE CALLED ========1111111111111111111111!==========");
@@ -415,61 +420,73 @@ public class NetworkTaskProgression : NetworkBehaviour
              // 2
             // instructionText.text = "Mix Water and Flour in Bowl";
             instructionText.text = "Metti l'acqua e la farina nella ciotola e mescola con le mani";
+            TaskLevelMessageToLog(1);
         }
         if (flourFilled.Value && waterFilled.Value){
             // 3
            // instructionText.text = "Knead the Dough";
             instructionText.text = "Lavora l'impasto con le mani";
+            TaskLevelMessageToLog(2);
         }
         if (doughKneaded.Value){
             // 4
            // instructionText.text = "Place Dough on Indicator";
             instructionText.text = "Posiziona l'impasto nell'indicatore";
+            TaskLevelMessageToLog(3);
         }
         if (doughPlaced.Value){
              // 5
             // instructionText.text = "Spread Dough with Two Hands using Rolling Pin";
             instructionText.text = "Stendi l'impasto con due mani usando il mattarello";
+            TaskLevelMessageToLog(4);
         }
         if (doughSpread.Value){
              // 6
             // instructionText.text = "Spread Sauce on Pizza with Spoon";
             instructionText.text = "Spalma il sugo sulla pizza con il cucchiaio";
+            TaskLevelMessageToLog(5);
         }
         if (tomatoSpread.Value && (sausageCut.Value < 4 || bellPepperCut.Value < 4)){
              // 7
             // instructionText.text = "Cut Pepper = " + Math.Min(bellPepperCut.Value,4) + "of 4 Cut Sausage = " + Math.Min(sausageCut.Value,4) + " of 4";   // \n
             instructionText.text = "Taglia il peperone = " + Math.Min(bellPepperCut.Value,4) + "di 4 Taglia la salsiccia = " + Math.Min(sausageCut.Value,4) + " di 4";
+            TaskLevelMessageToLog(6);
         }
         if (tomatoSpread.Value && (sausageCut.Value >= 4 && bellPepperCut.Value >= 4)){
              // 8
             // instructionText.text = "Place 4 Slices of each Topping on Pizza";
             instructionText.text = "Posiziona 4 fette di ogni condimento sulla pizza";
+            TaskLevelMessageToLog(7);
         }
         if (pizzaFinished.Value && !ovenOpen.Value){
              // 9
             // instructionText.text = "Open Oven with Button";   // This one DOES HAPPEN
             instructionText.text = "Apri il forno con il pulsante";   // This one DOES HAPPEN
+            TaskLevelMessageToLog(8);
         }
         if (pizzaFinished.Value && ovenOpen.Value){ //sans!  DOES NOT
             // 10
            // instructionText.text = "Put Pizza in Oven with Pizza Shovel";
            instructionText.text = "Inforna la pizza con la pala";
+           TaskLevelMessageToLog(9);
         }
         if (pizzaInOven.Value && ovenOpen.Value){ //sans!  DOES NOT
              // 11
             // instructionText.text = "Close Oven";
             instructionText.text = "Chiudi il forno";
+            TaskLevelMessageToLog(10);
         }
         if (pizzaInOven.Value && !ovenOpen.Value){  //DOES HAPPEN
              // 12
             // instructionText.text = "Baking " + pizzaBakeTimer.Value.ToString("F1");
             instructionText.text = "Cuoci la pizza " + pizzaBakeTimer.Value.ToString("F1");
+            TaskLevelMessageToLog(11);
         }
         if (pizzaBakeTimer.Value <= 0){
              // 13
             // instructionText.text = "Place Pizza on Plate with Pizza Shovel";
             instructionText.text = "Usa la pala per servire la pizza nel piatto";
+            TaskLevelMessageToLog(12);
             if (!pizzaBaked.Value)
             {
                 //BroadcastRemoteMethod("BakePizza");
@@ -493,6 +510,7 @@ public class NetworkTaskProgression : NetworkBehaviour
              // 14
             //instructionText.text = "Well Done , Thank you for your contribution!";
             instructionText.text = "Ben fatto! Grazie per il tuo contributo!";
+            TaskLevelMessageToLog(13);
         }
         if (cheeseGrated.Value && !final && finished.Value){
             instructionText.text = "Well Done!  Time: " + taskTimer.ToString("F1") + " Seconds";
@@ -508,6 +526,20 @@ public class NetworkTaskProgression : NetworkBehaviour
             // if (!test) InvokeRemoteMethod("WriteCSV", 65535, MeasurementsToString());
         }
     }
+
+        private void TaskLevelMessageToLog(int taskLevel)
+        {
+            if (currentTaskLevel >= taskLevel) return;
+
+            if (expressionScript != null && jointScript != null)
+            {
+                currentTaskLevel = taskLevel;
+                string levelString = "TASK " + currentTaskLevel;
+
+                expressionScript.AddTaskLevelMessage(levelString);
+                jointScript.AddTaskLevelMessage(levelString);
+            }
+        }
 
 
     //[SynchronizableMethod]

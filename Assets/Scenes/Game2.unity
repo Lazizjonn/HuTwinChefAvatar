@@ -8498,6 +8498,8 @@ MonoBehaviour:
     m_InternalValue: 10
   sessionID: 0
   setup: 0
+  expressionScript: {fileID: 1086962498}
+  jointScript: {fileID: 1086962497}
 --- !u!1 &1278453222 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2980341204456879131, guid: 4e149d45c7478ba4188d9cd47c9d7c5b, type: 3}

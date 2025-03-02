@@ -11,6 +11,7 @@ public class BoneLogger : MonoBehaviour
     private ConcurrentQueue<string> logQueue = new ConcurrentQueue<string>();
     private Thread logThread;
     private bool isRunning = true;
+    private string message = null;
 
     void Start()
     {
@@ -18,7 +19,7 @@ public class BoneLogger : MonoBehaviour
 
         if (skeleton == null)
         {
-            Debug.LogError("TTT, OVRSkeleton component not found on this GameObject, Start()");
+            // Debug.LogError("TTT, OVRSkeleton component not found on this GameObject, Start()");
             enabled = false;
             return;
         }
@@ -34,7 +35,7 @@ public class BoneLogger : MonoBehaviour
         Directory.CreateDirectory(Path.GetDirectoryName(logFilePath));
 
         File.WriteAllText(logFilePath, "Time,Bone,PositionX,PositionY,PositionZ,RotationX,RotationY,RotationZ,RotationW\n");
-        Debug.Log("TTT, Bone log file created at " + logFilePath + ", Start()");
+        // Debug.Log("TTT, Bone log file created at " + logFilePath + ", Start()");
 
         // Start the logging thread
         logThread = new Thread(LogToFile);
@@ -58,7 +59,7 @@ public class BoneLogger : MonoBehaviour
                                   $"{rotation.x:F3}, {rotation.y:F3}, {rotation.z:F3}, {rotation.w:F3}";
 
                 logQueue.Enqueue(logEntry);
-                Debug.Log("TTT, " + logEntry + ", Update()");
+                // Debug.Log("TTT, " + logEntry + ", Update()");
             }
         }
         else
@@ -66,7 +67,7 @@ public class BoneLogger : MonoBehaviour
             // Log invalid skeleton data
             string logEntry = $"{DateTime.Now:hh:mm:ss.fff tt}, Skeleton data is not valid or bones are missing.";
             logQueue.Enqueue(logEntry);
-            Debug.LogWarning("TTT, " + logEntry + ", Update()");
+            // Debug.LogWarning("TTT, " + logEntry + ", Update()");
         }
     }
 
@@ -74,6 +75,11 @@ public class BoneLogger : MonoBehaviour
     {
         while (isRunning || !logQueue.IsEmpty)
         {
+            if (message != null)
+            {
+               File.AppendAllText(logFilePath, message);
+               message = null;
+            }
             if (logQueue.TryDequeue(out string logEntry))
             {
                 File.AppendAllText(logFilePath, logEntry + "\n");
@@ -85,6 +91,12 @@ public class BoneLogger : MonoBehaviour
         }
     }
 
+    public void AddTaskLevelMessage(string taskLevel)
+    {
+       string taskLevelLog = $"########################   New level - {taskLevel}   ########################";
+       message = "\n" + taskLevelLog + "\n";
+    }
+
     void OnDestroy()
     {
         isRunning = false;
@@ -93,6 +105,6 @@ public class BoneLogger : MonoBehaviour
         // Log shutdown for debugging purposes
         string shutdownLog = $"{DateTime.Now:hh:mm:ss.fff tt}, Logging stopped and application shutting down.";
         File.AppendAllText(logFilePath, shutdownLog + "\n");
-        Debug.Log("TTT, " + shutdownLog + ", OnDestroy()");
+        // Debug.Log("TTT, " + shutdownLog + ", OnDestroy()");
     }
 }
